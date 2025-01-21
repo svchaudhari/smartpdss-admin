@@ -9,7 +9,7 @@ COPY start.sh ./start.sh
 
 # Install curl in the build image
 #RUN apk add --no-cache curl && \
-    rm -rf /var/cache/apk/*
+#rm -rf /var/cache/apk/*
 
 
 # Not useful for stateless builds
