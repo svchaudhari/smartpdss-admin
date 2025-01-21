@@ -3,6 +3,8 @@ FROM svchaudhari/alpine-maven-builder-jdk17:master-1 AS build
 ARG WORK_DIR
 WORKDIR /app
 
+COPY settings.xml /root/.m2/settings.xml
+
 # Copy the project files
 COPY ${WORK_DIR}/pom.xml ./pom.xml
 COPY start.sh ./start.sh
@@ -15,12 +17,7 @@ COPY start.sh ./start.sh
 # Not useful for stateless builds
 #RUN mvn -B dependency:go-offline
 COPY ${WORK_DIR}/src ./src
-RUN mvn clean package -DskipTests \
-  -Dhttp.proxyHost=192.0.2.12 \
-  -Dhttp.proxyPort=8080 \
-  -Dhttps.proxyHost=192.0.2.12 \
-  -Dhttps.proxyPort=8080
-
+RUN mvn clean package -DskipTests
 # Create runtime image
 FROM openjdk:17-alpine
 
