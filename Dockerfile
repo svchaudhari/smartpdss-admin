@@ -21,8 +21,8 @@ RUN mvn clean package -DskipTests
 FROM openjdk:17-alpine
 
 # Install curl in the runtime image
-RUN apk add --no-cache curl && \
-    rm -rf /var/cache/apk/*
+#RUN apk add --no-cache curl && \
+    #rm -rf /var/cache/apk/*
 
 
 EXPOSE 8080
