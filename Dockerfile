@@ -15,9 +15,11 @@ COPY start.sh ./start.sh
 # Not useful for stateless builds
 #RUN mvn -B dependency:go-offline
 COPY ${WORK_DIR}/src ./src
-ENV HTTP_PROXY=http://192.0.2.12:8080
-ENV HTTPS_PROXY=http://192.0.2.12:8080
-RUN mvn clean package -DskipTests
+RUN mvn clean package -DskipTests \
+  -Dhttp.proxyHost=192.0.2.12 \
+  -Dhttp.proxyPort=8080 \
+  -Dhttps.proxyHost=192.0.2.12 \
+  -Dhttps.proxyPort=8080
 
 # Create runtime image
 FROM openjdk:17-alpine
