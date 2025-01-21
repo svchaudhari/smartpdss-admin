@@ -8,7 +8,7 @@ COPY ${WORK_DIR}/pom.xml ./pom.xml
 COPY start.sh ./start.sh
 
 # Install curl in the build image
-RUN apk add --no-cache curl && \
+#RUN apk add --no-cache curl && \
     rm -rf /var/cache/apk/*
 
 
