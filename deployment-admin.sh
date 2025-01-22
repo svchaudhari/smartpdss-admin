@@ -24,7 +24,7 @@ CPU_REQUEST="250m"
 MEMORY_LIMIT="512Mi"
 CPU_LIMIT="500m"
 DEPLOY_DB_VARS=true
-EXTERNAL_ENV_FILE="/home/smartpds/k8s-smartpds/admin/external-var-admin.txt"  # Path to external file
+EXTERNAL_ENV_FILE="external-var-admin.txt"  # Path to external file
 
 
 
